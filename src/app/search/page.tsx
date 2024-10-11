@@ -1,29 +1,29 @@
 // src/app/search/page.tsx
 
-'use client';
+'use client'
 
-import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 
 const agencies = [
   { name: 'Digital Silk', location: 'New York City, US', teamSize: '50-100', year: '2015', rate: '$150/hr' },
   // Add more sample agencies here...
-];
+]
 
 export default function SearchPage() {
-  const searchParams = useSearchParams();
-  const searchQuery = searchParams.get('search') || '';
-  const locationQuery = searchParams.get('location') || '';
+  const searchParams = useSearchParams()
+  const searchQuery = searchParams.get('search') || ''
+  const locationQuery = searchParams.get('location') || ''
 
   // Filter the agencies based on search query and filters
   const filteredAgencies = agencies.filter(agency => {
     return agency.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-           agency.location.toLowerCase().includes(locationQuery.toLowerCase());
-  });
+           agency.location.toLowerCase().includes(locationQuery.toLowerCase())
+  })
 
   return (
     <div className="container mx-auto py-12">
-      <h1 className="text-3xl font-bold mb-6">Search Results for &quot;{searchQuery}&quot; in &quot;{locationQuery}&quot;</h1>
+      <h1 className="text-3xl font-bold mb-6">Search Results for "{searchQuery}" in "{locationQuery}"</h1>
       <div className="grid grid-cols-1 gap-6">
         {filteredAgencies.map((agency, index) => (
           <Link key={index} href={`/${agency.name.toLowerCase().replace(/\s+/g, '-')}`}>
@@ -43,5 +43,5 @@ export default function SearchPage() {
         ))}
       </div>
     </div>
-  );
+  )
 }

@@ -2,7 +2,6 @@
 
 'use client';
 
-import FindandContact from '@/components/FindandContact';
 import { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import IdealProjectPartner from '@/components/IdealProjectPartner';
@@ -63,7 +62,6 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <main>
         <HeroSection handleSearch={handleSearch} />
-        <FindandContact />
         <IdealProjectPartner />
         <FeaturedAgenciesSection agencies={filteredAgencies} />
         <SlidingLogos />

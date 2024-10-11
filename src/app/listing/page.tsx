@@ -1,9 +1,10 @@
 // src/app/listing/page.tsx
 
-'use client';
+'use client'
 
-import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
+import Image from 'next/image'
 
 const agencies = [
   {
@@ -19,21 +20,21 @@ const agencies = [
     rate: '$200/hr',
   },
   // Add more agencies as needed...
-];
+]
 
 export default function ListingPage() {
-  const searchParams = useSearchParams();
-  const searchQuery = searchParams.get('search') || '';
-  const locationQuery = searchParams.get('location') || '';
+  const searchParams = useSearchParams()
+  const searchQuery = searchParams.get('search') || ''
+  const locationQuery = searchParams.get('location') || ''
 
   const filteredAgencies = agencies.filter(agency =>
     agency.name.toLowerCase().replace(/\s+/g, '-').includes(searchQuery) &&
     agency.location.toLowerCase().includes(locationQuery)
-  );
+  )
 
   return (
     <div className="container mx-auto py-12">
-      <h1 className="text-3xl font-bold mb-6">Search Results for &quot;{searchQuery}&quot; in &quot;{locationQuery}&quot;</h1>
+      <h1 className="text-3xl font-bold mb-6">Search Results for "{searchQuery}" in "{locationQuery}"</h1>
 
       {/* Listing Agencies */}
       <div className="grid grid-cols-1 gap-6">
@@ -59,5 +60,5 @@ export default function ListingPage() {
         )}
       </div>
     </div>
-  );
+  )
 }
