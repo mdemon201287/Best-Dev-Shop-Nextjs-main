@@ -1,4 +1,4 @@
-// components/IdealProjectSection.tsx
+// sr/components/IdealProjectSection.tsx
 
 import React from 'react';
 

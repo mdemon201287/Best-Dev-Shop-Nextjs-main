@@ -1,3 +1,6 @@
+// src/components/FindandContact.tsx
+
+
 import React from 'react';
 
 const FindandContact = () => {
