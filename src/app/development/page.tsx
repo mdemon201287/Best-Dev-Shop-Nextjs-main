@@ -97,6 +97,8 @@ export default function DevelopmentPage() {
                         <span>{agency.location}</span>
                         <span>{agency.rate}</span>
                       </div>
+                      <button className="mt-4 mr-4 bg-black text-white px-4 py-2 rounded">Visit Website</button>
+                      <button className="mt-4 bg-gray-300 text-black px-4 py-2 rounded">View Portfolio</button>
                     </div>
                   </Link>
                 );

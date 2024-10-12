@@ -8,6 +8,7 @@ import IdealProjectPartner from '@/components/IdealProjectPartner';
 import SlidingLogos from '@/components/SlidingLogos';
 import ClientTestimonials from '@/components/ClientTestimonials';
 import FeaturedAgenciesSection from '@/components/FeaturedAgenciesSection';
+import FindandContact from '@/components/FindandContact';
 
 const agencies = [
   {
@@ -62,6 +63,7 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <main>
         <HeroSection handleSearch={handleSearch} />
+        <FindandContact />
         <IdealProjectPartner />
         <FeaturedAgenciesSection agencies={filteredAgencies} />
         <SlidingLogos />

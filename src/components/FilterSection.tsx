@@ -32,7 +32,7 @@ export default function FilterSection() {
     <div className="w-64 bg-white p-4 rounded-lg shadow">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold">Filters</h2>
-        <button className="text-blue-600 text-sm">Clear all</button>
+        <button className="text-gray-900 text-sm">Clear all</button>
       </div>
       <p className="text-sm text-gray-500 mb-4">Showing 12 of 100</p>
 
@@ -241,31 +241,32 @@ export default function FilterSection() {
         <hr className="border-gray-200" />
 
         <div>
-          <button
-            className="flex justify-between items-center w-full text-left font-medium"
-            onClick={() => toggleSection('filterNine')}
-          >
-            Filter Nine
-            <ChevronDown
-              className={`w-5 h-5 transition-transform ${expandedSections.filterNine ? 'rotate-180' : ''}`}
-            />
-          </button>
-          {expandedSections.filterNine && (
-            <div className="mt-2 flex items-center">
-              <span className="text-sm mr-2">Off</span>
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  className="sr-only peer"
-                  checked={filterNine}
-                  onChange={e => setFilterNine(e.target.checked)}
-                />
-                <div className="w-11 h-6 bg-gray-200 rounded-full peer-checked:bg-blue-600 peer-focus:ring-blue-300"></div>
-                <span className="ml-3 text-sm">{filterNine ? 'On' : 'Off'}</span>
-              </label>
-            </div>
-          )}
-        </div>
+  <button
+    className="flex justify-between items-center w-full text-left font-medium"
+    onClick={() => toggleSection('filterNine')}
+  >
+    Filter Nine
+    <ChevronDown
+      className={`w-5 h-5 transition-transform ${expandedSections.filterNine ? 'rotate-180' : ''}`}
+    />
+  </button>
+  {expandedSections.filterNine && (
+    <div className="mt-2 flex items-center">
+      <span className="text-sm mr-2">{filterNine ? 'On' : 'Off'}</span>
+      <label className="relative inline-flex items-center cursor-pointer">
+        <input
+          type="checkbox"
+          className="sr-only peer"
+          checked={filterNine}
+          onChange={e => setFilterNine(e.target.checked)}
+        />
+        <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-black transition duration-300"></div>
+        <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-all peer-checked:translate-x-5"></div>
+      </label>
+    </div>
+  )}
+</div>
+
       </div>
     </div>
   );
