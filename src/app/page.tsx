@@ -1,74 +1,58 @@
-// src/app/page.tsx
-
+// src/app/admin/page.tsx
 'use client';
 
 import { useState } from 'react';
-import HeroSection from '@/components/HeroSection';
-import IdealProjectPartner from '@/components/IdealProjectPartner';
-import SlidingLogos from '@/components/SlidingLogos';
-import ClientTestimonials from '@/components/ClientTestimonials';
-import FeaturedAgenciesSection from '@/components/FeaturedAgenciesSection';
-import FindandContact from '@/components/FindandContact';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
-const agencies = [
-  {
-    name: 'Digital Silk',
-    location: 'New York City, US',
-    teamSize: '50-100',
-    rate: '$150/hr',
-  },
-  {
-    name: 'Think to Share',
-    location: 'San Francisco, US',
-    teamSize: '50-100',
-    rate: '$200/hr',
-  },
-  {
-    name: 'Ignite Visibility',
-    location: 'New York City, US',
-    teamSize: '50-100',
-    rate: '$200/hr',
-  },
-  {
-    name: 'Trango Tech',
-    location: 'New York City, US',
-    teamSize: '50-100',
-    rate: '$200/hr',
-  },
-  {
-    name: 'Eseo Space',
-    location: 'New York City, US',
-    teamSize: '50-100',
-    rate: '$200/hr',
-  },
-];
+export default function AdminLoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { login } = useAuth();
+  const router = useRouter();
 
-export default function Home() {
-  const [filteredAgencies, setFilteredAgencies] = useState(agencies);
-
-  const handleSearch = (searchQuery: string, locationQuery: string) => {
-    const formattedSearchQuery = searchQuery.toLowerCase().replace(/\s+/g, '-');
-    const formattedLocationQuery = locationQuery.toLowerCase().replace(/\s+/g, '-');
-
-    const matchingAgencies = agencies.filter(
-      (agency) =>
-        agency.name.toLowerCase().startsWith(formattedSearchQuery) &&
-        agency.location.toLowerCase().startsWith(formattedLocationQuery)
-    );
-
-    setFilteredAgencies(matchingAgencies);
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Placeholder logic for login - replace with real authentication
+    if (email === 'admin@example.com' && password === 'admin123') {
+      login();
+      router.push('/admin/dashboard');
+    } else {
+      alert('Invalid credentials');
+    }
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <main>
-        <HeroSection handleSearch={handleSearch} />
-        <FindandContact />
-        <IdealProjectPartner />
-        <FeaturedAgenciesSection agencies={filteredAgencies} />
-        <SlidingLogos />
-        <ClientTestimonials />
-      </main>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <form onSubmit={handleLogin} className="p-6 bg-white rounded shadow-md w-80">
+        <h1 className="text-2xl font-bold mb-4">Admin Login</h1>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          className="w-full mb-4 p-2 border rounded"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          className="w-full mb-4 p-2 border rounded"
+          required
+        />
+        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">
+          Login
+        </button>
+        <button
+          type="button"
+          className="mt-2 text-sm text-blue-600 underline"
+          onClick={() => alert('Reset password link sent!')}
+        >
+          Forgot Password?
+        </button>
+      </form>
     </div>
   );
 }
